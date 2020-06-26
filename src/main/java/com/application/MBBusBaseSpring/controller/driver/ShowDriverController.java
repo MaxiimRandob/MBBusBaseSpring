@@ -1,16 +1,16 @@
-package com.application.MBBusBaseSpring.controller;
+package com.application.MBBusBaseSpring.controller.driver;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("/driver/profile")
+public class ShowDriverController {
 
     @GetMapping
-    public String home()
+    public String profile()
     {
-        return "home";
+        return "driverProfile";
     }
 }
