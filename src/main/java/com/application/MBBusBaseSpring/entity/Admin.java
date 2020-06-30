@@ -5,4 +5,4 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("1")
-public class Admin { }
+public class Admin extends User{ }

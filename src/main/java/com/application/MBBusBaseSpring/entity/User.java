@@ -30,7 +30,6 @@ public class User {
     private String email;
 
     @Column(name = "Bus_idBus")
-    @OneToOne
     private String busId;
 
     public int getIdUser() {
