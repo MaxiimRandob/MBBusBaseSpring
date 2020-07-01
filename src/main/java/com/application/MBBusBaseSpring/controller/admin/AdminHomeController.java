@@ -11,6 +11,6 @@ public class AdminHomeController {
     @GetMapping
     public String profile()
     {
-        return "redirect:/driver/profile";
+        return "redirect:/admin/profile";
     }
 }
