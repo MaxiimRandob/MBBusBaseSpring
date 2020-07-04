@@ -6,10 +6,11 @@ import javax.persistence.*;
 @Entity(name = "User")
 @Table(name = "user")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "Discriminator", discriminatorType = DiscriminatorType.INTEGER)
+@DiscriminatorColumn(name = "discriminator", discriminatorType = DiscriminatorType.INTEGER)
 public class User {
     @Id
-    private int idUser;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -29,15 +30,15 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "Bus_idBus")
+    @Column(name = "bus_id")
     private String busId;
 
-    public int getIdUser() {
-        return idUser;
+    public int getId() {
+        return id;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {

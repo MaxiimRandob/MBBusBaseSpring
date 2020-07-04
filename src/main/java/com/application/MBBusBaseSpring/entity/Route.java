@@ -8,7 +8,7 @@ public class Route {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idRoute;
+    private int id;
 
     private String name;
 
@@ -16,11 +16,11 @@ public class Route {
     }
 
     public int getId() {
-        return idRoute;
+        return id;
     }
 
     public void setId(int idRoute) {
-        this.idRoute = idRoute;
+        this.id = idRoute;
     }
 
     public String getName() {
