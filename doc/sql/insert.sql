@@ -1,5 +1,5 @@
 INSERT INTO `route`
-(idRoute, name) VALUES
+(id, name) VALUES
 (1,'R01'),
 (2,'R02'),
 (3,'R03'),
@@ -12,7 +12,7 @@ INSERT INTO `route`
 (10,'R10');
 
 INSERT INTO `bus`
-(idBus, model,  name, Route_idRoute) VALUES
+(id, model,  name, route_id) VALUES
 (1, 'Bogdan',  'A092', 1),
 (2, 'Bogdan',  'A092', 1),
 (3, 'Bogdan',  'A092', 1),
@@ -30,8 +30,8 @@ INSERT INTO `bus`
 (15, 'CityLAZ',  '12', 1);
 
 INSERT INTO `user`
-(idUser, Discriminator, first_name, email,
- second_name, login, password, role, Bus_idBus) VALUES
+(id, discriminator, first_name, email,
+ second_name, login, password, role, bus_id) VALUES
 (1,1,'Barak', 'Barak@gmail.com', 'Obama', 'barak123', '321karab', 'admin', null),
 (2,1,'Donald', 'Donald@gmail.com', 'Trump', 'trump123', '321pmurt', 'admin', null),
 (3,2,'Timmy', 'Timmy@gmail.com', 'Vermalen', 'timmy123', '321ymmit', 'driver', 1),

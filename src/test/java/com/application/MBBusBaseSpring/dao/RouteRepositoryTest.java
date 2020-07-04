@@ -1,6 +1,7 @@
 package com.application.MBBusBaseSpring.dao;
 
 import com.application.MBBusBaseSpring.entity.Route;
+import net.minidev.json.JSONUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,8 @@ public class RouteRepositoryTest {
     @Test
     public void getAllRoutesTest() {
         Assert.assertNotNull((List<Route>) routeRepository.findAll());
-        System.out.println(((List<Route>) routeRepository.findAll()).get(1).getName());
+
+        List<Route> routes = (List<Route>)routeRepository.findAll();
+        routes.forEach(route -> System.out.println(route.getName()));
     }
 }

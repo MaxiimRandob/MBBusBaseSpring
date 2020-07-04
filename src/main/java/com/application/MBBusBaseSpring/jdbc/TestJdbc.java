@@ -29,12 +29,12 @@ public class TestJdbc {
 
         try(Connection connection = DriverManager.getConnection(jdbcUrl, user, password);)
         {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM `route` WHERE idRoute = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM `route` WHERE id = ?");
             preparedStatement.setInt(1, 1);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next())
             {
-                route.setId(resultSet.getInt("idRoute"));
+                route.setId(resultSet.getInt("id"));
                 route.setName(resultSet.getString("name"));
 
             }
