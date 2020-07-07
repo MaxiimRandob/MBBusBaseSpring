@@ -1,5 +1,6 @@
 package com.application.MBBusBaseSpring.dao;
 
+import com.application.MBBusBaseSpring.entity.Driver;
 import com.application.MBBusBaseSpring.entity.Route;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,22 +11,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-
-//@DataJpaTest
-//@AutoConfigureTestDatabase(replace=AutoConfigureTestDatabase.Replace.NONE)
-//@WebAppConfiguration
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RouteRepositoryTest {
-
+public class DriverRepositoryTest {
     @Autowired
-    private RouteRepository routeRepository;
+    private DriverRepository driverRepository;
 
     @Test
-    public void getAllRoutesTest() {
-        Assert.assertNotNull(routeRepository.findAll());
+    public void getDriverByIdTest() {
+        Assert.assertNotNull(driverRepository.findById(3));
 
-        List<Route> routes = (List<Route>)routeRepository.findAll();
-        routes.forEach(route -> System.out.println(route.getName()));
+        Driver driver = driverRepository.findById(3).get();
+        System.out.println(driver.getFirstName() + " " + driver.getSecondName());
     }
 }
