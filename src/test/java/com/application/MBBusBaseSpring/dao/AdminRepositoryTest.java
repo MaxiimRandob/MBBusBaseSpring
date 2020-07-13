@@ -20,6 +20,6 @@ public class AdminRepositoryTest {
         Assert.assertNotNull(adminRepository.findById(1));
 
         Admin admin = adminRepository.findById(1).get();
-        System.out.println(admin.getFirstName() + " " + admin.getSecondName());
+        System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getPassword() + " " + admin.getUsername() );
     }
 }

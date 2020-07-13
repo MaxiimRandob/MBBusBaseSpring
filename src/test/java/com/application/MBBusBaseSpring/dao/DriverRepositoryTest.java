@@ -22,6 +22,6 @@ public class DriverRepositoryTest {
         Assert.assertNotNull(driverRepository.findById(3));
 
         Driver driver = driverRepository.findById(3).get();
-        System.out.println(driver.getFirstName() + " " + driver.getSecondName());
+        System.out.println(driver.getFirstName() + " " + driver.getSecondName() + " " + driver.getBusId() + " " + driver.getRole());
     }
 }

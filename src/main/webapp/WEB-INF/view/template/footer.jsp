@@ -1,2 +1,9 @@
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="<c:url value = "js/jquery-1.11.3.min.js" />"><\/script>')</script>--%>
+<script type="text/javascript" src="<c:url value = "js/bootstrap.min.js" />"></script>
 </body>
 </html>
