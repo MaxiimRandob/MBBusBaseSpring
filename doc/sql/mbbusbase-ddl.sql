@@ -56,13 +56,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mBBusBase`.`User` ;
 
 CREATE TABLE IF NOT EXISTS `mBBusBase`.`User` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `discriminator` INT NULL,
   `first_name` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
   `second_name` VARCHAR(45) NULL,
   `login` VARCHAR(45) NULL,
-  `password` VARCHAR(90) NULL,
+  `password` VARCHAR(68) NULL,
   `role` VARCHAR(45) NULL,
   `bus_id` INT NULL,
   PRIMARY KEY (`id`),
