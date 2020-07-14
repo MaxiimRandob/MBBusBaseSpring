@@ -1,5 +1,7 @@
 package com.application.MBBusBaseSpring.security;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -16,6 +18,8 @@ import java.util.Collection;
 
 public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
 
+    private static final Logger LOG = LogManager.getLogger(AuthenticationSuccessHandlerImpl.class);
+
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Override
@@ -23,6 +27,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
                                         HttpServletResponse response,
                                         Authentication authentication)
             throws IOException, ServletException {
+        LOG.info("authentication process is successful by now");
         handle(request, response, authentication);
         clearAuthenticationAttributes(request);
 

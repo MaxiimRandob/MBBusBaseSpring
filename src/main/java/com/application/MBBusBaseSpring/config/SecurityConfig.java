@@ -1,6 +1,8 @@
 package com.application.MBBusBaseSpring.config;
 
 import com.application.MBBusBaseSpring.security.AuthenticationSuccessHandlerImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -10,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import javax.annotation.Resource;
@@ -18,22 +22,31 @@ import javax.annotation.Resource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private static final Logger LOG = LogManager.getLogger(SecurityConfig.class);
 
     @Resource
     UserDetailsService userDetailsService;
 
 
     @Bean
+    public static PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
+
+    @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        LOG.info("BCrypt encoder is set");
         return new BCryptPasswordEncoder();
     }
 
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
+        LOG.info("inside dao auth provider");
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(bCryptPasswordEncoder());
+        LOG.info("provider has been initialized");
         return authProvider;
     }
 
@@ -45,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
+        LOG.info("auth provider configuration");
         auth.authenticationProvider(authenticationProvider());
     }
 
