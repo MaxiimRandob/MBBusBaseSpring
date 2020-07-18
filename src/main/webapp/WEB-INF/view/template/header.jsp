@@ -51,9 +51,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                      <sec:authorize access="hasRole('ADMIN')">
-                         <li><a href="${pageContext.request.contextPath}/admin"> <spring:message code="header.admin"/></a></li>
-                      </sec:authorize>
+
                     </ul>
                     <ul class="nav navbar-nav pull-right">
 

@@ -15,13 +15,13 @@ import java.util.List;
 @SpringBootTest
 public class DriverRepositoryTest {
     @Autowired
-    private DriverRepository driverRepository;
+    private UserRepository driverRepository;
 
     @Test
     public void getDriverByIdTest() {
         Assert.assertNotNull(driverRepository.findById(3));
 
-        Driver driver = driverRepository.findById(3).get();
+        Driver driver = (Driver) driverRepository.findById(3).get();
         System.out.println(driver.getFirstName() + " " + driver.getSecondName() + " " + driver.getBusId() + " " + driver.getRole());
     }
 }

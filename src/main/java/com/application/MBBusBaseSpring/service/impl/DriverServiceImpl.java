@@ -1,6 +1,6 @@
 package com.application.MBBusBaseSpring.service.impl;
 
-import com.application.MBBusBaseSpring.dao.DriverRepository;
+import com.application.MBBusBaseSpring.dao.UserRepository;
 import com.application.MBBusBaseSpring.entity.Driver;
 import com.application.MBBusBaseSpring.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +14,10 @@ import java.util.Optional;
 public class DriverServiceImpl implements DriverService {
 
     @Autowired
-    DriverRepository driverRepository;
+    UserRepository repository;
 
     @Override
-    public Optional<Driver> getById(int id) {
-        return driverRepository.findById(id);
+    public Driver getById(int id) {
+        return (Driver)repository.findById(id).get();
     }
 }

@@ -13,13 +13,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class AdminRepositoryTest {
     @Autowired
-    private AdminRepository adminRepository;
+    private UserRepository adminRepository;
 
     @Test
     public void getDriverByIdTest() {
         Assert.assertNotNull(adminRepository.findById(1));
 
-        Admin admin = adminRepository.findById(1).get();
+        Admin admin = (Admin) adminRepository.findById(1).get();
         System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getPassword() + " " + admin.getUsername() );
     }
 }

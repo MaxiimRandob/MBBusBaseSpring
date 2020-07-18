@@ -12,8 +12,8 @@ public class AdminHomeController {
 
 
     @GetMapping
-    public String profile(@PathVariable int id)
+    public String profile()
     {
-        return "redirect:/admin/profile/{id}";
+        return "redirect:/admin/profile";
     }
 }

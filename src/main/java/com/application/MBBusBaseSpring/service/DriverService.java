@@ -6,5 +6,5 @@ import com.application.MBBusBaseSpring.entity.Driver;
 import java.util.Optional;
 
 public interface DriverService {
-     Optional<Driver> getById(int id);
+     Driver getById(int id);
 }
