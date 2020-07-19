@@ -19,9 +19,18 @@ public class DriverRepositoryTest {
 
     @Test
     public void getDriverByIdTest() {
-        Assert.assertNotNull(driverRepository.findById(3));
+        Assert.assertNotNull(driverRepository.findById(7));
 
-        Driver driver = (Driver) driverRepository.findById(3).get();
+        Driver driver = (Driver) driverRepository.findById(7).get();
         System.out.println(driver.getFirstName() + " " + driver.getSecondName() + " " + driver.getBusId() + " " + driver.getRole());
+    }
+
+    @Test
+    public void getDriverByUsernameTest() {
+        Assert.assertNotNull(driverRepository.findByUsername("semen"));
+
+        Driver driver = (Driver) driverRepository.findByUsername("semen").get();
+        System.out.println(driver.getFirstName() + " " + driver.getSecondName() + " " + driver.getBusId() + " " + driver.getRole());
+
     }
 }

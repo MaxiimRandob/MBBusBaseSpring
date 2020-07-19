@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DriverHomeController {
 
     @GetMapping
-    public String profile(@PathVariable int id)
-    {
-        return "redirect:/driver/profile/{id}";
+    public String profile() {
+        return "redirect:/driver/profile";
     }
 }

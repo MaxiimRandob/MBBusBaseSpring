@@ -22,4 +22,13 @@ public class AdminRepositoryTest {
         Admin admin = (Admin) adminRepository.findById(1).get();
         System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getPassword() + " " + admin.getUsername() );
     }
+
+    @Test
+    public void getAdminByUsernameTest() {
+        Assert.assertNotNull(adminRepository.findByUsername("trump"));
+
+        Admin admin = (Admin) adminRepository.findByUsername("trump").get();
+        System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getBusId() + " " + admin.getRole());
+
+    }
 }

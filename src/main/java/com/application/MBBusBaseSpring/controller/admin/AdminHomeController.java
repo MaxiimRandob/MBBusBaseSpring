@@ -9,11 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminHomeController {
 
-
-
     @GetMapping
-    public String profile()
-    {
+    public String profile() {
         return "redirect:/admin/profile";
     }
 }

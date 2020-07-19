@@ -5,7 +5,7 @@
         <div id="login-box">
 
 
-            <h2> <fmt:message key = "login.greeting"/></h2>
+            <h2> Login page </h2>
 
             <c:if test="${not empty msg}">
                 <div class="msg">${msg}</div>
@@ -19,16 +19,16 @@
 
 
                  <div class="form-group">
-                     <label for="username"> <fmt:message key = "login.user"/> </label>
+                     <label for="username"> user login </label>
                      <input type="text" id="username" name="username" class="form-control" />
                  </div>
 
                 <div class="form-group">
-                    <label for="password"> <fmt:message key = "login.password"/></label>
+                    <label for="password"> password </label>
                     <input type="password" id="password" name="password" class="form-control" />
                 </div>
 
-                <input type="submit" value=<fmt:message key = "login.submit"/> class="btn btn-default">
+                <input type="submit" value=Submit button class="btn btn-default">
 
 
                 </form>

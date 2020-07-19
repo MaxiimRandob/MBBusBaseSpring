@@ -23,9 +23,8 @@ public class ShowAdminController {
     private UserServiceImpl userService;
 
     @GetMapping
-    public String profile(Model model)
-    {
-        Admin admin = (Admin)userService.getCurrentUser();
+    public String profile(Model model) {
+        Admin admin = (Admin) userService.getCurrentUser();
         model.addAttribute("admin", admin);
         return "adminProfile";
     }
