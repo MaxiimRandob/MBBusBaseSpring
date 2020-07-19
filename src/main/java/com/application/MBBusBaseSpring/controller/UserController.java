@@ -1,30 +1,25 @@
-package com.application.MBBusBaseSpring.controller.admin;
+package com.application.MBBusBaseSpring.controller;
 
 import com.application.MBBusBaseSpring.dao.UserRepository;
 import com.application.MBBusBaseSpring.entity.Admin;
-import com.application.MBBusBaseSpring.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/admin/profile")
-public class ShowAdminController {
+public class UserController {
 
     @Autowired
     UserRepository repository;
 
-    @Autowired
-    private UserServiceImpl userService;
-
-    @GetMapping
-    public String profile(Model model) {
-        Admin admin = (Admin) userService.getCurrentUser();
+    @GetMapping()
+    public String profile(@PathVariable int id, Model model)
+    {
+        Admin admin = (Admin) repository.findById(id).get();
         model.addAttribute("admin", admin);
         return "adminProfile";
     }

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "discriminator", discriminatorType = DiscriminatorType.INTEGER)
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "first_name")
@@ -19,7 +19,7 @@ public class User {
     private String secondName;
 
     @Column(name = "login")
-    private String login;
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -57,12 +57,12 @@ public class User {
         this.secondName = secondName;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

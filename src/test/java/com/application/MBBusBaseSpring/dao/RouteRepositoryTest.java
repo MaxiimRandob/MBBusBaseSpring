@@ -1,22 +1,16 @@
 package com.application.MBBusBaseSpring.dao;
 
 import com.application.MBBusBaseSpring.entity.Route;
-import net.minidev.json.JSONUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
 
-//@RunWith(SpringRunner.class)
 //@DataJpaTest
 //@AutoConfigureTestDatabase(replace=AutoConfigureTestDatabase.Replace.NONE)
 //@WebAppConfiguration
@@ -29,7 +23,7 @@ public class RouteRepositoryTest {
 
     @Test
     public void getAllRoutesTest() {
-        Assert.assertNotNull((List<Route>) routeRepository.findAll());
+        Assert.assertNotNull(routeRepository.findAll());
 
         List<Route> routes = (List<Route>)routeRepository.findAll();
         routes.forEach(route -> System.out.println(route.getName()));

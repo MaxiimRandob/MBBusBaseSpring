@@ -27,7 +27,7 @@ public class TestJdbc {
 
         Route route = new Route();
 
-        try(Connection connection = DriverManager.getConnection(jdbcUrl, user, password);)
+        try(Connection connection = DriverManager.getConnection(jdbcUrl, user, password))
         {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM `route` WHERE id = ?");
             preparedStatement.setInt(1, 1);
@@ -39,6 +39,8 @@ public class TestJdbc {
 
             }
         }
+
+
         catch (SQLException e)
         {
             e.printStackTrace();
