@@ -33,6 +33,18 @@ public class User {
     @Column(name = "bus_id")
     private String busId;
 
+    public User() {
+    }
+
+    public User(String firstName, String secondName, String username, String password, String role, String email) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.email = email;
+    }
+
     public int getId() {
         return id;
     }

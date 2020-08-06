@@ -30,6 +30,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         LOG.info("authentication process is successful by now");
         handle(request, response, authentication);
         clearAuthenticationAttributes(request);
+        LOG.info("authentication attributes are cleared");
 
 
     }
@@ -38,6 +39,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
                           HttpServletResponse response, Authentication authentication)
             throws IOException {
 
+        LOG.info("inside req, res handle method");
         String targetUrl = determineTargetUrl(authentication);
 
         if (response.isCommitted()) {
@@ -45,6 +47,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         }
 
         redirectStrategy.sendRedirect(request, response, targetUrl);
+        LOG.info("redirected to " + targetUrl.toString());
     }
 
     protected String determineTargetUrl(Authentication authentication) {
@@ -55,9 +58,11 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         for (GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("ROLE_DRIVER")) {
                 isDriver = true;
+                LOG.info("role determined as 'DRIVER' ");
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
                 isAdmin = true;
+                LOG.info("role determined as 'ADMIN' ");
                 break;
             }
         }
@@ -77,10 +82,12 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
             return;
         }
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+        LOG.info("session attributes removed");
     }
 
     public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
         this.redirectStrategy = redirectStrategy;
+        LOG.info("set redirect strategy");
     }
 
     protected RedirectStrategy getRedirectStrategy() {
