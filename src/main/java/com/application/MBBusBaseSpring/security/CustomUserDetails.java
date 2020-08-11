@@ -3,7 +3,6 @@ package com.application.MBBusBaseSpring.security;
 import com.application.MBBusBaseSpring.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,8 +38,8 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        LOG.info("getting username:" +user.getUsername());
-        return user.getUsername();
+        LOG.info("getting username:" +user.getLogin());
+        return user.getLogin();
     }
 
     @Override

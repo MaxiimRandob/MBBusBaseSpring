@@ -19,7 +19,7 @@ public class User {
     private String secondName;
 
     @Column(name = "login")
-    private String username;
+    private String login;
 
     @Column(name = "password")
     private String password;
@@ -33,13 +33,16 @@ public class User {
     @Column(name = "bus_id")
     private String busId;
 
+    @Column(name = "discriminator", insertable = false, updatable= false)
+    private int discriminator;
+
     public User() {
     }
 
-    public User(String firstName, String secondName, String username, String password, String role, String email) {
+    public User(String firstName, String secondName, String login, String password, String role, String email) {
         this.firstName = firstName;
         this.secondName = secondName;
-        this.username = username;
+        this.login = login;
         this.password = password;
         this.role = role;
         this.email = email;
@@ -69,12 +72,12 @@ public class User {
         this.secondName = secondName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -108,4 +111,6 @@ public class User {
     public void setBusId(String busId) {
         this.busId = busId;
     }
+
+
 }

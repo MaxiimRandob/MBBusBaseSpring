@@ -25,13 +25,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         LOG.info("checking for user: " + username);
-        Optional<User> userOptional = userRepository.findByUsername(username);
+        Optional<User> userOptional = userRepository.findByLogin(username);
 
         if(!userOptional.isPresent()) {
             throw new UsernameNotFoundException("User not found.");
         }
 
-        LOG.info("loading user with username here: " + userOptional.get().getUsername());
+        LOG.info("loading user with username here: " + userOptional.get().getLogin());
         return new CustomUserDetails(userOptional.get());
     }
 }

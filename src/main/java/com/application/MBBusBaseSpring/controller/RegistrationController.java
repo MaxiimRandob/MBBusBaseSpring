@@ -3,7 +3,8 @@ package com.application.MBBusBaseSpring.controller;
 import com.application.MBBusBaseSpring.controller.dto.RegistrationForm;
 import com.application.MBBusBaseSpring.exception.UserExistException;
 import com.application.MBBusBaseSpring.security.UserDetailsServiceImpl;
-import com.application.MBBusBaseSpring.service.UserService;
+import com.application.MBBusBaseSpring.service.user.RegistrationRequest;
+import com.application.MBBusBaseSpring.service.user.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,12 @@ import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 
 
 @Controller
-    @RequestMapping(value = "/registration")
-    public class RegistrationController {
+@RequestMapping(value = "/registration")
+public class RegistrationController {
         private static final Logger LOG = LogManager.getLogger(UserDetailsServiceImpl.class);
         @Autowired
         private UserService userService;
@@ -41,14 +43,16 @@ import org.springframework.web.bind.annotation.*;
         }
 
         @PostMapping
-        public String registerUser(@ModelAttribute("registrationForm") RegistrationForm registrationForm, BindingResult error) {
+        public String registerUser(@Valid @ModelAttribute("registrationForm") RegistrationForm registrationForm, BindingResult error) {
             LOG.info("Form {}", registrationForm);
             if (error.hasErrors()) {
                 return "registration";
             }
+            RegistrationRequest registrationRequest = new RegistrationRequest();
+            registrationRequest.validateUserByRole(registrationForm);
 
             try {
-                userService.registerUser(registrationForm, "DRIVER");
+                userService.registerUser(registrationRequest);
             } catch (UserExistException e) {
                 LOG.error(e.getMessage());
                 error.rejectValue("login", "registration.login.exist");

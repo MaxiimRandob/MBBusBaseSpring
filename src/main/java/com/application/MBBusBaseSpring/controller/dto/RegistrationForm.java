@@ -1,6 +1,6 @@
 package com.application.MBBusBaseSpring.controller.dto;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 public class RegistrationForm {
     @NotNull
@@ -13,17 +13,20 @@ public class RegistrationForm {
     private String password;
     @NotNull
     private String email;
+    @NotNull
+    private String role;
     private String password_confirm;
 
     public RegistrationForm() {
     }
 
-    public RegistrationForm(@NotNull String first_name, @NotNull String second_name, @NotNull String login, @NotNull String password, @NotNull String email, String password_confirm) {
+    public RegistrationForm(@NotNull String first_name, @NotNull String second_name, @NotNull String login, @NotNull String password, @NotNull String email, @NotNull String role, String password_confirm) {
         this.first_name = first_name;
         this.second_name = second_name;
         this.login = login;
         this.password = password;
         this.email = email;
+        this.role = role;
         this.password_confirm = password_confirm;
     }
 
@@ -67,6 +70,13 @@ public class RegistrationForm {
         this.email = email;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getPassword_confirm() {
         return password_confirm;
