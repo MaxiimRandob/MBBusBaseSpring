@@ -1,6 +1,7 @@
 package com.application.MBBusBaseSpring.dao;
 
 import com.application.MBBusBaseSpring.entity.Driver;
+import com.application.MBBusBaseSpring.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

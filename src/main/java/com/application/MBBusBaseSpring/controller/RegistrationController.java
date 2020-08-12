@@ -49,10 +49,10 @@ public class RegistrationController {
                 return "registration";
             }
             RegistrationRequest registrationRequest = new RegistrationRequest();
-            registrationRequest.validateUserByRole(registrationForm);
+
 
             try {
-                userService.registerUser(registrationRequest);
+                userService.registerUser(registrationRequest.validateUserByRole(registrationForm));
             } catch (UserExistException e) {
                 LOG.error(e.getMessage());
                 error.rejectValue("login", "registration.login.exist");

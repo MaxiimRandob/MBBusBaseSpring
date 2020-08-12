@@ -55,6 +55,14 @@
                                                     <form:errors path="email" />
                                                 </div>
                                                 <div class="form-group offset-top-18">
+                                                    <label for="role" class="form-label-outside">Role</label>
+                                                    <form:select path="role" type="text" name="role" data-constraints="@Required" class="form-control">
+                                                        <form:option value="ADMIN"/>
+                                                        <form:option value="DRIVER"/>
+                                                    </form:select>
+                                                    <form:errors path="role" />
+                                                </div>
+                                                <div class="form-group offset-top-18">
                                                     <label for="password" class="form-label-outside">Password</label>
                                                     <form:input type="password" path="password" name="password"
                                                         data-constraints="@Required" class="form-control" />

@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
     public User registerUser(RegistrationRequest request) {
         LOG.info("Register user");
 
-        //RegistrationForm form = request.getForm();
+        //RegistrationForm form = request.getForm();   // -- using of word "form" inside service method in order to dry code
         String role = request.getRole();
 
         if (userRepository.existsByLogin(request.getForm().getLogin())) {
