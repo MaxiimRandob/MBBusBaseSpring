@@ -1,7 +1,6 @@
 package com.application.MBBusBaseSpring.dao;
 
 import com.application.MBBusBaseSpring.entity.Admin;
-import com.application.MBBusBaseSpring.entity.Driver;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,14 +19,14 @@ public class AdminRepositoryTest {
         Assert.assertNotNull(adminRepository.findById(1));
 
         Admin admin = (Admin) adminRepository.findById(1).get();
-        System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getPassword() + " " + admin.getUsername() );
+        System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getPassword() + " " + admin.getLogin() );
     }
 
     @Test
     public void getAdminByUsernameTest() {
-        Assert.assertNotNull(adminRepository.findByUsername("trump"));
+        Assert.assertNotNull(adminRepository.findByLogin("trump"));
 
-        Admin admin = (Admin) adminRepository.findByUsername("trump").get();
+        Admin admin = (Admin) adminRepository.findByLogin("trump").get();
         System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getBusId() + " " + admin.getRole());
 
     }

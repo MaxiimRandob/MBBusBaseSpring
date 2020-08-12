@@ -5,4 +5,11 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("2")
-public class Driver extends User{ }
+public class Driver extends User {
+    public Driver() {
+    }
+
+    public Driver(String firstName, String secondName, String login, String password, String role, String email) {
+        super(firstName, secondName, login, password, role, email);
+    }
+}

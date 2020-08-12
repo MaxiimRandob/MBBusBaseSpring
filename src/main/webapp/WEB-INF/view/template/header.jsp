@@ -6,31 +6,8 @@
 
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <c:import url="head-part.jsp"/>
     <title>AutoPark management system</title>
-
-    <!-- Angular JS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"> </script>
-
-        <%--JQuery--%>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-
-        <%--Data Table--%>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-        <!-- Bootstrap core CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-        <!-- Main CSS -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css"  type="text/css">
-
-        <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 
 </head>
 

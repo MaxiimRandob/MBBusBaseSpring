@@ -41,14 +41,14 @@ public class MbBusBaseSpringApplication {
 	@Bean
 	public ApplicationRunner initializer(UserRepository repository){
 		return args -> {
-			Optional<User> userOptional = repository.findByUsername("admin");
+			Optional<User> userOptional = repository.findByLogin("admin");
 			if(!userOptional.isPresent()){
 				LOG.info("InMemory initialization with artificial user");
 				User user = new User();
-				user.setUsername("admin");
+				user.setLogin("admin");
 				user.setPassword("$2a$10$wdN0CXWAD7vJ0bIxOHasI.Y.5LJrYanLW/NaOFEhPNvcdaJUR4SfS");
 				user.setRole("ROLE_ADMIN");
-				LOG.info("username: " + user.getUsername());
+				LOG.info("username: " + user.getLogin());
 				repository.save(user);
 			}
 		};

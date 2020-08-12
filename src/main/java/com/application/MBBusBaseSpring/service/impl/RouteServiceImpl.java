@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RouteServiceImpl implements RouteService {
-
     @Autowired
     RouteRepository routeRepository;
 
@@ -19,6 +18,5 @@ public class RouteServiceImpl implements RouteService {
     public Iterable<Route> getAll() {
         return routeRepository.findAll();
     }
-
 
 }

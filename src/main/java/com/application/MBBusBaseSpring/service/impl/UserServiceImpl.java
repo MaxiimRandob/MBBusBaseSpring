@@ -1,20 +1,42 @@
 package com.application.MBBusBaseSpring.service.impl;
 
+import com.application.MBBusBaseSpring.controller.dto.RegistrationForm;
+import com.application.MBBusBaseSpring.dao.AdminRepository;
+import com.application.MBBusBaseSpring.dao.DriverRepository;
 import com.application.MBBusBaseSpring.dao.UserRepository;
+import com.application.MBBusBaseSpring.entity.Admin;
+import com.application.MBBusBaseSpring.entity.Driver;
 import com.application.MBBusBaseSpring.entity.User;
-import com.application.MBBusBaseSpring.service.UserSevice;
+import com.application.MBBusBaseSpring.exception.UserExistException;
+import com.application.MBBusBaseSpring.service.user.RegistrationRequest;
+import com.application.MBBusBaseSpring.service.user.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.acls.model.NotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserSevice {
+public class UserServiceImpl implements UserService {
+
+    private static final Logger LOG = LogManager.getLogger(UserServiceImpl.class);
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    DriverRepository driverRepository;
+
+    @Autowired
+    AdminRepository adminRepository;
+
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public User getCurrentUser() throws NotFoundException {
@@ -33,6 +55,36 @@ public class UserServiceImpl implements UserSevice {
             username = obj.toString();
         }
 
-        return userRepository.findByUsername(username).get();
+        return userRepository.findByLogin(username).get();
     }
+
+    @Override
+    public User registerUser(RegistrationRequest request) {
+        LOG.info("Register user");
+
+        //RegistrationForm form = request.getForm();   // -- using of word "form" inside service method in order to dry code
+        String role = request.getRole();
+
+        RegistrationForm form = request.getForm();
+        if (userRepository.existsByLogin(form.getLogin())) {
+            throw new UserExistException(String.format("User with login %s already exists", form.getLogin()));
+        }
+
+        String password = passwordEncoder.encode(form.getPassword());
+
+        if (request.getRole().equalsIgnoreCase("admin")) {
+            Admin admin = new Admin(form.getFirst_name(), form.getSecond_name(), form.getLogin(), password, role, form.getEmail());
+            LOG.info("Save new admin: " + admin);
+            return adminRepository.save(admin);
+        } else if (request.getRole().equalsIgnoreCase("driver")) {
+            Driver driver = new Driver(form.getFirst_name(), form.getSecond_name(), form.getLogin(), password, role, form.getEmail());
+            LOG.info("Save new driver: " + driver);
+            return driverRepository.save(driver);
+        }
+
+        return null;
+
+    }
+
+
 }
