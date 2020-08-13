@@ -1,4 +1,15 @@
-<%@include file="/WEB-INF/view/template/header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
+<html>
+<head>
+    <c:import url="head-part.jsp"/>
+    <title>AutoPark management system</title>
+
+</head>
+<body>
 
 <div class="container-wrapper">
     <div class="container">
@@ -11,7 +22,7 @@
                 <div class="msg">${msg}</div>
             </c:if>
 
-            <form name="loginForm" action="${pageContext.request.contextPath}/login"  method="post">
+            <form name="loginForm" action="login"  method="post">
 
                   <c:if test="${param.error != null}">
                       <div class="error" style="color: #ff0000"><fmt:message key = "login.error.bad.credentials"/></div>

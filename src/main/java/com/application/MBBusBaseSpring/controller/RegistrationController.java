@@ -2,8 +2,7 @@ package com.application.MBBusBaseSpring.controller;
 
 import com.application.MBBusBaseSpring.controller.dto.RegistrationForm;
 import com.application.MBBusBaseSpring.exception.UserExistException;
-import com.application.MBBusBaseSpring.security.UserDetailsServiceImpl;
-import com.application.MBBusBaseSpring.service.user.RegistrationRequest;
+import com.application.MBBusBaseSpring.service.dto.RegistrationRequest;
 import com.application.MBBusBaseSpring.service.user.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping(value = "/registration")
 public class RegistrationController {
-        private static final Logger LOG = LogManager.getLogger(UserDetailsServiceImpl.class);
+        private static final Logger LOG = LogManager.getLogger(RegistrationController.class);
         @Autowired
         private UserService userService;
         @Autowired
@@ -48,11 +47,16 @@ public class RegistrationController {
             if (error.hasErrors()) {
                 return "registration";
             }
-            RegistrationRequest registrationRequest = new RegistrationRequest();
+            RegistrationRequest registrationRequest = new RegistrationRequest(
+                    registrationForm.getFirst_name(), registrationForm.getSecond_name(),
+                    registrationForm.getLogin(), registrationForm.getPassword(),
+                    registrationForm.getEmail(), registrationForm.getRole(),
+                    registrationForm.getPassword_confirm());
+
 
 
             try {
-                userService.registerUser(registrationRequest.validateUserByRole(registrationForm));
+                userService.registerUser(registrationRequest);
             } catch (UserExistException e) {
                 LOG.error(e.getMessage());
                 error.rejectValue("login", "registration.login.exist");
