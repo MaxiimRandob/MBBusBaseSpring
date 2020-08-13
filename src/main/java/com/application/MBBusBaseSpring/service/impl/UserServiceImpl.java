@@ -1,6 +1,5 @@
 package com.application.MBBusBaseSpring.service.impl;
 
-import com.application.MBBusBaseSpring.controller.dto.RegistrationForm;
 import com.application.MBBusBaseSpring.dao.AdminRepository;
 import com.application.MBBusBaseSpring.dao.DriverRepository;
 import com.application.MBBusBaseSpring.dao.UserRepository;
@@ -62,7 +61,6 @@ public class UserServiceImpl implements UserService {
     public User registerUser(RegistrationRequest request) {
         LOG.info("Register user");
 
-        //RegistrationForm form = request.getForm();   // -- using of word "form" inside service method in order to dry code
         String role = request.getRole();
 
 

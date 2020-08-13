@@ -1,6 +1,5 @@
 package com.application.MBBusBaseSpring.controller;
 
-import com.application.MBBusBaseSpring.controller.dto.LoginForm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -15,9 +14,6 @@ public class LoginController {
 
     @GetMapping
     public String login(Model model) {
-
-//        LOG.info("Set form into model");
-//        model.addAttribute("command", new LoginForm());
 
         LOG.info("Get login page");
         return "login";
