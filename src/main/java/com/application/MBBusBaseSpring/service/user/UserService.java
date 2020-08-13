@@ -1,7 +1,7 @@
 package com.application.MBBusBaseSpring.service.user;
 
-import com.application.MBBusBaseSpring.controller.dto.RegistrationForm;
 import com.application.MBBusBaseSpring.entity.User;
+import com.application.MBBusBaseSpring.service.dto.RegistrationRequest;
 import org.springframework.security.acls.model.NotFoundException;
 
 

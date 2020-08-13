@@ -1,20 +1,27 @@
 package com.application.MBBusBaseSpring.controller.dto;
 
+import com.application.MBBusBaseSpring.controller.HomeController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Objects;
 
 public class LoginForm {
-    private String username;
+    private static final Logger LOG = LogManager.getLogger(HomeController.class);
+
+    private String login;
     private String password;
 
     public LoginForm() {
+        LOG.info("Inside LoginForm constructor");
     }
 
-    public String getUsername() {
-        return username;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -34,16 +41,16 @@ public class LoginForm {
             return false;
         }
         LoginForm loginForm = (LoginForm) o;
-        return Objects.equals(username, loginForm.username) && Objects.equals(password, loginForm.password);
+        return Objects.equals(login, loginForm.login) && Objects.equals(password, loginForm.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password);
+        return Objects.hash(login, password);
     }
 
     @Override
     public String toString() {
-        return "LoginForm{" + "username='" + username + '\'' + ", password='" + password + '\'' + '}';
+        return "LoginForm{" + "username='" + login + '\'' + ", password='" + password + '\'' + '}';
     }
 }
