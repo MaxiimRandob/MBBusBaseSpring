@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/driver")
-public class DriverHomeController {
+public class DriverContextController {
 
     @GetMapping
     public String profile() {

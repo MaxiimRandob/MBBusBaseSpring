@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminHomeController {
+public class AdminContextController {
 
     @GetMapping
     public String profile() {
