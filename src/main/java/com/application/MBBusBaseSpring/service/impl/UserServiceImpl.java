@@ -8,6 +8,7 @@ import com.application.MBBusBaseSpring.entity.Driver;
 import com.application.MBBusBaseSpring.entity.User;
 import com.application.MBBusBaseSpring.exception.UserExistException;
 import com.application.MBBusBaseSpring.service.dto.RegistrationRequest;
+import com.application.MBBusBaseSpring.service.dto.UpdateProfileRequest;
 import com.application.MBBusBaseSpring.service.user.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -54,6 +55,7 @@ public class UserServiceImpl implements UserService {
             username = obj.toString();
         }
 
+        LOG.info("Getting user");
         return userRepository.findByLogin(username).get();
     }
 
@@ -82,6 +84,34 @@ public class UserServiceImpl implements UserService {
 
         return null;
 
+    }
+
+    @Override
+    public User updateUser(UpdateProfileRequest request) {
+        LOG.info("Edit profile");
+        User user = getCurrentUser();
+
+        String role = user.getRole();
+
+        user.setLogin(request.getLogin());
+        user.setFirstName(request.getFirst_name());
+        user.setSecondName(request.getSecond_name());
+        user.setEmail(request.getEmail());
+
+        LOG.info("User before casting {}", user);
+
+        if (role.equalsIgnoreCase("admin")) {
+
+            LOG.info("update admin: " + user);
+            LOG.info("User after casting {}", (Admin)user);
+            return adminRepository.save((Admin) user);
+        } else if (role.equalsIgnoreCase("driver")) {
+            LOG.info("update driver: " + user);
+            LOG.info("User after casting {}", (Driver)user);
+            return driverRepository.save((Driver) user);
+        }
+
+        return null;
     }
 
 
