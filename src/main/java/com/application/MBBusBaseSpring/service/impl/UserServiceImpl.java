@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
         String username = "";
 
         if (obj instanceof UserDetails) {
+            LOG.info("getting current user inside if block");
             username = ((UserDetails) obj).getUsername();
         } else {
             username = obj.toString();
@@ -93,21 +94,23 @@ public class UserServiceImpl implements UserService {
 
         String role = user.getRole();
 
+        LOG.info("Login from request: " + request.getLogin());
+
         user.setLogin(request.getLogin());
+        LOG.info("Login from user after setting: " + user.getLogin());
         user.setFirstName(request.getFirst_name());
         user.setSecondName(request.getSecond_name());
         user.setEmail(request.getEmail());
 
-        LOG.info("User before casting {}", user);
 
         if (role.equalsIgnoreCase("admin")) {
 
             LOG.info("update admin: " + user);
-            LOG.info("User after casting {}", (Admin)user);
+            LOG.info("User data after casting: " + ((Admin)user).getRole() + " " + ((Admin)user).getFirstName() + " " + ((Admin)user).getSecondName());
             return adminRepository.save((Admin) user);
         } else if (role.equalsIgnoreCase("driver")) {
             LOG.info("update driver: " + user);
-            LOG.info("User after casting {}", (Driver)user);
+            LOG.info("User data after casting: " + ((Driver)user).getRole() + " " + ((Driver)user).getFirstName() + " " + ((Driver)user).getSecondName());
             return driverRepository.save((Driver) user);
         }
 
