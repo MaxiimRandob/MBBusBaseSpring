@@ -12,10 +12,6 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("home");
-    }
 
     @Bean
     public ViewResolver viewResolver() {
@@ -26,5 +22,19 @@ public class MvcConfig implements WebMvcConfigurer {
         bean.setSuffix(".jsp");
 
         return bean;
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("home");
+        registry.addViewController("/login").setViewName("login");
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/static/")
+                .addResourceLocations("/WEB-INF/images/");
     }
 }
