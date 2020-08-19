@@ -37,8 +37,10 @@ public class DriverController {
     @PostMapping(value = "/driver/profile")
     public String profile(@ModelAttribute("profileForm") ProfileForm profileForm, Model model) {
         LOG.info("Form {}", profileForm);
-        UpdateProfileRequest profileRequest = new UpdateProfileRequest();
+        UpdateProfileRequest profileRequest = new UpdateProfileRequest(profileForm.getFirst_name(), profileForm.getSecond_name(),
+                                                                       profileForm.getEmail(), profileForm.getLogin());
+
         userService.updateUser(profileRequest);
-        return "redirect:/";
+        return "driverProfile";
     }
 }
