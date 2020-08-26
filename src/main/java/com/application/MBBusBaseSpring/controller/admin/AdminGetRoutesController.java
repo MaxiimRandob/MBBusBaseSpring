@@ -16,7 +16,7 @@ public class AdminGetRoutesController {
     @Autowired
     private RouteService routeService;
 
-    @GetMapping(value = "admin/routes-list")
+    @GetMapping(value = "admin/route-list")
     public String routes(Model model)
     {
         LOG.info("Inside routes get method");
@@ -24,6 +24,6 @@ public class AdminGetRoutesController {
        routes = routeService.getCurrentWorkload(routes);
         LOG.info("Adding routes into model");
        model.addAttribute("routes", routes);
-       return "routes-list";
+       return "route-list";
     }
 }

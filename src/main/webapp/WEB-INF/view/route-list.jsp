@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<html>
+<html class="wide wow-animation">
 
 <head>
   <c:import url="head-part.jsp" />
@@ -15,6 +15,7 @@
 <body>
 
   <div class="page">
+  <main class="page-content">
     <section class="section-top-20 section-sm-top-40 section-sm-bottom-110">
       <div class="shell">
         <div class="range">
@@ -65,7 +66,7 @@
         </div>
       </div>
     </section>
-
+    </main>
   </div>
 
 

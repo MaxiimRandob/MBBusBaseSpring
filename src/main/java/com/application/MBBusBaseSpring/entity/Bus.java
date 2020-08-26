@@ -23,6 +23,8 @@ public class Bus {
     @JoinColumn(name = "route_id")
     private Route route;
 
+    @OneToOne(mappedBy = "bus")
+    private Driver driver;
 
     public Bus() {
     }
