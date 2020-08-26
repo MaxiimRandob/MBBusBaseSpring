@@ -30,8 +30,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "bus_id")
-    private String busId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bus_id")
+    private Bus bus;
 
     @Column(name = "discriminator", insertable = false, updatable= false)
     private int discriminator;
@@ -104,13 +105,11 @@ public class User {
         this.email = email;
     }
 
-    public String getBusId() {
-        return busId;
+    public Bus getBus()  {
+        return bus;
     }
 
-    public void setBusId(String busId) {
-        this.busId = busId;
+    public void setBus(Bus bus) {
+        this.bus = bus;
     }
-
-
 }

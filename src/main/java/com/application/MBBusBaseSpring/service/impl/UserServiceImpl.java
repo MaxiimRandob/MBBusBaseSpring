@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
     @Override
     public User getCurrentUser() throws NotFoundException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -115,6 +116,11 @@ public class UserServiceImpl implements UserService {
         }
 
         return null;
+    }
+
+    @Override
+    public Iterable<Driver> getAllDrivers() {
+        return driverRepository.findAll();
     }
 
 

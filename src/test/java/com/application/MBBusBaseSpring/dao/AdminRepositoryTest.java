@@ -27,7 +27,7 @@ public class AdminRepositoryTest {
         Assert.assertNotNull(adminRepository.findByLogin("trump"));
 
         Admin admin = (Admin) adminRepository.findByLogin("trump").get();
-        System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getBusId() + " " + admin.getRole());
+        System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getRole());
 
     }
 }
