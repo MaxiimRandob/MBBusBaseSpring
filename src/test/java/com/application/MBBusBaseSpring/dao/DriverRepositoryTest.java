@@ -1,7 +1,6 @@
 package com.application.MBBusBaseSpring.dao;
 
 import com.application.MBBusBaseSpring.entity.Driver;
-import com.application.MBBusBaseSpring.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +19,7 @@ public class DriverRepositoryTest {
         Assert.assertNotNull(driverRepository.findById(7));
 
         Driver driver = (Driver) driverRepository.findById(7).get();
-        System.out.println(driver.getFirstName() + " " + driver.getSecondName() + " " + driver.getRole());
+        System.out.println(driver.getFirstName() + " " + driver.getLastName() + " " + driver.getRole());
     }
 
     @Test
@@ -28,7 +27,7 @@ public class DriverRepositoryTest {
         Assert.assertNotNull(driverRepository.findByLogin("semen"));
 
         Driver driver = (Driver) driverRepository.findByLogin("semen").get();
-        System.out.println(driver.getFirstName() + " " + driver.getSecondName() + " " + driver.getRole());
+        System.out.println(driver.getFirstName() + " " + driver.getLastName() + " " + driver.getRole());
 
     }
 }

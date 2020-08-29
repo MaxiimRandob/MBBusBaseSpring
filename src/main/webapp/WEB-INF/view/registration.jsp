@@ -37,10 +37,10 @@
                                                     <form:errors path="first_name" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="second_name" class="form-label-outside">Last Name</label>
-                                                    <form:input path="second_name" type="text" name="second_name-name"
+                                                    <label for="last_name" class="form-label-outside">Last Name</label>
+                                                    <form:input path="last_name" type="text" name="last-name"
                                                         data-constraints="@Required" class="form-control" />
-                                                    <form:errors path="second_name" />
+                                                    <form:errors path="last_name" />
                                                 </div>
                                                 <div class="form-group offset-top-18">
                                                     <label for="login" class="form-label-outside">Login</label>
