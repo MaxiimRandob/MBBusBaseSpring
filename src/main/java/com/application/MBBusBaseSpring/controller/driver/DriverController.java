@@ -1,10 +1,6 @@
 package com.application.MBBusBaseSpring.controller.driver;
 
-import com.application.MBBusBaseSpring.controller.HomeController;
 import com.application.MBBusBaseSpring.controller.dto.ProfileForm;
-import com.application.MBBusBaseSpring.dao.UserRepository;
-import com.application.MBBusBaseSpring.entity.Admin;
-import com.application.MBBusBaseSpring.entity.Driver;
 import com.application.MBBusBaseSpring.service.dto.UpdateProfileRequest;
 import com.application.MBBusBaseSpring.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -13,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @Controller
 public class DriverController {
@@ -37,8 +31,8 @@ public class DriverController {
     @PostMapping(value = "/driver/profile")
     public String profile(@ModelAttribute("profileForm") ProfileForm profileForm, Model model) {
         LOG.info("Form {}", profileForm);
-        UpdateProfileRequest profileRequest = new UpdateProfileRequest(profileForm.getFirst_name(), profileForm.getSecond_name(),
-                                                                       profileForm.getEmail(), profileForm.getLogin());
+        UpdateProfileRequest profileRequest = new UpdateProfileRequest(profileForm.getFirst_name(),
+                profileForm.getLast_name(), profileForm.getLogin());
 
         userService.updateUser(profileRequest);
         return "driverProfile";

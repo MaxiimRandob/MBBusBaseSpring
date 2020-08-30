@@ -6,13 +6,11 @@ public class RegistrationForm {
     @NotNull
     private String first_name;
     @NotNull
-    private String second_name;
+    private String last_name;
     @NotNull
     private String login;
     @NotNull
     private String password;
-    @NotNull
-    private String email;
     @NotNull
     private String role;
     private String password_confirm;
@@ -20,12 +18,11 @@ public class RegistrationForm {
     public RegistrationForm() {
     }
 
-    public RegistrationForm(@NotNull String first_name, @NotNull String second_name, @NotNull String login, @NotNull String password, @NotNull String email, @NotNull String role, String password_confirm) {
+    public RegistrationForm(@NotNull String first_name, @NotNull String last_name, @NotNull String login, @NotNull String password, @NotNull String role, String password_confirm) {
         this.first_name = first_name;
-        this.second_name = second_name;
+        this.last_name = last_name;
         this.login = login;
         this.password = password;
-        this.email = email;
         this.role = role;
         this.password_confirm = password_confirm;
     }
@@ -38,12 +35,12 @@ public class RegistrationForm {
         this.first_name = first_name;
     }
 
-    public String getSecond_name() {
-        return second_name;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setSecond_name(String second_name) {
-        this.second_name = second_name;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getLogin() {
@@ -60,14 +57,6 @@ public class RegistrationForm {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getRole() {

@@ -28,22 +28,15 @@
                             <div class="cell-sm-6 offset-top-18 offset-sm-top-0">
                               <div class="form-group offset-top-18">
                                 <label for="last_name" class="form-label-outside"></label>
-                                <form:input path="last_name" value="${currentUser.secondName}" type="text" name="last-name" data-constraints="@Required" class="form-control"/>
+                                <form:input path="last_name" value="${currentUser.lastName}" type="text" name="last-name" data-constraints="@Required" class="form-control"/>
                                 <form:errors path="last_name" />
                               </div>
                             </div>
                             <div class="cell-sm-6 offset-top-18">
                               <div class="form-group offset-top-18">
                                 <label for="login" class="form-label-outside"></label>
-                                <form:input path="login" value="${currentUser.login}" type="text" name="login" data-constraints="@Required" class="form-control"/>
+                                <form:input path="login" value="${currentUser.login}" type="text" name="login" data-constraints="@Required @Email" class="form-control"/>
                                 <form:errors path="login" />
-                              </div>
-                            </div>
-                            <div class="cell-sm-6 offset-top-18">
-                              <div class="form-group offset-top-18">
-                                <label for="email" class="form-label-outside"></label>
-                                <form:input path="email" value="${currentUser.email}" type="text" name="email" data-constraints="@Required @Email" class="form-control"/>
-                                <form:errors path="email" />
                               </div>
                             </div>
 

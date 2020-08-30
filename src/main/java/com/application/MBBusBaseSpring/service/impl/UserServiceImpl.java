@@ -75,11 +75,11 @@ public class UserServiceImpl implements UserService {
         String password = passwordEncoder.encode(request.getPassword());
 
         if (role.equalsIgnoreCase("admin")) {
-            Admin admin = new Admin(request.getFirst_name(), request.getSecond_name(), request.getLogin(), password, role, request.getEmail());
+            Admin admin = new Admin(request.getFirst_name(), request.getLast_name(), request.getLogin(), password, role);
             LOG.info("Save new admin: " + admin);
             return adminRepository.save(admin);
         } else if (role.equalsIgnoreCase("driver")) {
-            Driver driver = new Driver(request.getFirst_name(), request.getSecond_name(), request.getLogin(), password, role, request.getEmail());
+            Driver driver = new Driver(request.getFirst_name(), request.getLast_name(), request.getLogin(), password, role);
             LOG.info("Save new driver: " + driver);
             return driverRepository.save(driver);
         }
@@ -100,8 +100,8 @@ public class UserServiceImpl implements UserService {
         user.setLogin(request.getLogin());
         LOG.info("Login from user after setting: " + user.getLogin());
         user.setFirstName(request.getFirst_name());
-        user.setLastName(request.getSecond_name());
-        user.setEmail(request.getEmail());
+        user.setLastName(request.getLast_name());
+
 
 
         if (role.equalsIgnoreCase("admin")) {

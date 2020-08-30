@@ -48,9 +48,8 @@ public class RegistrationController {
                 return "registration";
             }
             RegistrationRequest registrationRequest = new RegistrationRequest(
-                    registrationForm.getFirst_name(), registrationForm.getSecond_name(),
-                    registrationForm.getLogin(), registrationForm.getPassword(),
-                    registrationForm.getEmail(), registrationForm.getRole(),
+                    registrationForm.getFirst_name(), registrationForm.getLast_name(),
+                    registrationForm.getLogin(), registrationForm.getPassword(), registrationForm.getRole(),
                     registrationForm.getPassword_confirm());
 
 
