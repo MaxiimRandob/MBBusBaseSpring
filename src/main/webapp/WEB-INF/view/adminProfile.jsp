@@ -52,6 +52,8 @@
 <a href = "route-list"> Routes </a>
 <br>
 <a href = "adminDrivers"> Drivers </a>
+<br>
+<a href = "adminAssignments"> Assignments </a>
 
 
 <%@include file="/WEB-INF/view/template/footer.jsp" %>

@@ -93,18 +93,11 @@ CREATE TABLE IF NOT EXISTS `mBBusBase`.`User` (
   `password` VARCHAR(68) NULL DEFAULT NULL,
   `role` VARCHAR(45) NULL DEFAULT NULL,
   `bus_id` INT NULL DEFAULT NULL,
-  `assignment_id` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_User_Bus1_idx` (`bus_id` ASC) VISIBLE,
-  INDEX `fk_User_Assignment1_idx` (`assignment_id` ASC) VISIBLE,
   CONSTRAINT `fk_User_Bus1`
     FOREIGN KEY (`bus_id`)
     REFERENCES `mBBusBase`.`Bus` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_User_Assignment1`
-    FOREIGN KEY (`assignment_id`)
-    REFERENCES `mBBusBase`.`Assignment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

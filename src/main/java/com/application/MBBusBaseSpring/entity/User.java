@@ -2,6 +2,7 @@ package com.application.MBBusBaseSpring.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "User")
 @Table(name = "user")
@@ -30,6 +31,9 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bus_id")
     private Bus bus;
+
+    @OneToMany(mappedBy = "driver")
+    private List<Assignment> assignments;
 
     @Column(name = "discriminator", insertable = false, updatable= false)
     private int discriminator;
@@ -99,5 +103,13 @@ public class User {
 
     public void setBus(Bus bus) {
         this.bus = bus;
+    }
+
+    public List<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(List<Assignment> assignments) {
+        this.assignments = assignments;
     }
 }
