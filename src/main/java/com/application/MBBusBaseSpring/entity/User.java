@@ -27,9 +27,6 @@ public class User {
     @Column(name = "role")
     private String role;
 
-    @Column(name = "email")
-    private String email;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bus_id")
     private Bus bus;
@@ -40,13 +37,12 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String login, String password, String role, String email) {
+    public User(String firstName, String lastName, String login, String password, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
         this.password = password;
         this.role = role;
-        this.email = email;
     }
 
     public int getId() {
@@ -95,14 +91,6 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Bus getBus()  {

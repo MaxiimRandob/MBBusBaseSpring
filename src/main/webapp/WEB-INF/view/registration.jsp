@@ -45,14 +45,8 @@
                                                 <div class="form-group offset-top-18">
                                                     <label for="login" class="form-label-outside">Login</label>
                                                     <form:input path="login" type="text" name="login"
-                                                        data-constraints="@Required" class="form-control" />
-                                                    <form:errors path="login" />
-                                                </div>
-                                                <div class="form-group offset-top-18">
-                                                    <label for="email" class="form-label-outside">Email</label>
-                                                    <form:input path="email" type="text" name="email"
                                                         data-constraints="@Email @Required" class="form-control" />
-                                                    <form:errors path="email" />
+                                                    <form:errors path="login" />
                                                 </div>
                                                 <div class="form-group offset-top-18">
                                                     <label for="role" class="form-label-outside">Role</label>
