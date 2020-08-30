@@ -19,7 +19,7 @@ public class AdminRepositoryTest {
         Assert.assertNotNull(adminRepository.findById(1));
 
         Admin admin = (Admin) adminRepository.findById(1).get();
-        System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getPassword() + " " + admin.getLogin() );
+        System.out.println(admin.getFirstName() + " " + admin.getLastName() + " " + admin.getPassword() + " " + admin.getLogin() );
     }
 
     @Test
@@ -27,7 +27,7 @@ public class AdminRepositoryTest {
         Assert.assertNotNull(adminRepository.findByLogin("trump"));
 
         Admin admin = (Admin) adminRepository.findByLogin("trump").get();
-        System.out.println(admin.getFirstName() + " " + admin.getSecondName() + " " + admin.getRole());
+        System.out.println(admin.getFirstName() + " " + admin.getLastName() + " " + admin.getRole());
 
     }
 }

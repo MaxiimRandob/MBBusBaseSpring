@@ -28,8 +28,8 @@
                             <div class="cell-sm-6 offset-top-18 offset-sm-top-0">
                               <div class="form-group offset-top-18">
                                 <label for="last_name" class="form-label-outside"></label>
-                                <form:input path="second_name" value="${currentUser.secondName}" type="text" name="second-name" data-constraints="@Required" class="form-control"/>
-                                <form:errors path="second_name" />
+                                <form:input path="last_name" value="${currentUser.secondName}" type="text" name="last-name" data-constraints="@Required" class="form-control"/>
+                                <form:errors path="last_name" />
                               </div>
                             </div>
                             <div class="cell-sm-6 offset-top-18">

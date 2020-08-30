@@ -35,7 +35,7 @@
     <c:forEach items="${drivers}" var="driver">
         <tr>
             <td>${driver.firstName}</td>
-            <td>${driver.secondName}</td>
+            <td>${driver.lastName}</td>
             <td>${driver.bus.name}</td>
             <td>${driver.bus.route.name}</td>
         </tr>

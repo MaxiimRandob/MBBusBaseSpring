@@ -100,18 +100,18 @@ public class UserServiceImpl implements UserService {
         user.setLogin(request.getLogin());
         LOG.info("Login from user after setting: " + user.getLogin());
         user.setFirstName(request.getFirst_name());
-        user.setSecondName(request.getSecond_name());
+        user.setLastName(request.getSecond_name());
         user.setEmail(request.getEmail());
 
 
         if (role.equalsIgnoreCase("admin")) {
 
             LOG.info("update admin: " + user);
-            LOG.info("User data after casting: " + ((Admin)user).getRole() + " " + ((Admin)user).getFirstName() + " " + ((Admin)user).getSecondName());
+            LOG.info("User data after casting: " + (user).getRole() + " " + (user).getFirstName() + " " + (user).getLastName());
             return adminRepository.save((Admin) user);
         } else if (role.equalsIgnoreCase("driver")) {
             LOG.info("update driver: " + user);
-            LOG.info("User data after casting: " + ((Driver)user).getRole() + " " + ((Driver)user).getFirstName() + " " + ((Driver)user).getSecondName());
+            LOG.info("User data after casting: " + (user).getRole() + " " + (user).getFirstName() + " " + (user).getLastName());
             return driverRepository.save((Driver) user);
         }
 
