@@ -12,7 +12,7 @@ public interface UserService {
 
      User getCurrentUser() throws NotFoundException;
 
-     User registerUser(RegistrationRequest request);
+     void registerUser(RegistrationRequest request);
 
      User updateUser(UpdateProfileRequest request);
 }

@@ -72,4 +72,12 @@ public class Assignment {
         this.driver = driver;
     }
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

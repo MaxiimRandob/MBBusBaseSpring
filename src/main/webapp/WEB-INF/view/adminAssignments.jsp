@@ -56,12 +56,15 @@
                                                                         <tbody>
                                                                             <c:forEach items="${assignments}"
                                                                                 var="assignment">
+                                                                                <c:url var="Details" value="assignmentAdminDetails">
+                                                                                        <c:param name="assignmentId" value="${assignment.id}" />
+                                                                                    </c:url>
                                                                                 <tr>
                                                                                     <td>${assignment.driver.login}</td>
                                                                                     <td>${assignment.bus.name}</td>
                                                                                     <td>${assignment.route.name}</td>
                                                                                     <td>${assignment.status}</td>
-                                                                                    <td> details </td>
+                                                                                    <td> <a href="${Details}">details</a> </td>
                                                                                 </tr>
                                                                             </c:forEach>
                                                                         </tbody>
