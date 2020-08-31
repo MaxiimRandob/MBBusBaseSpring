@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registerUser(RegistrationRequest request) {
+    public void registerUser(RegistrationRequest request) {
         LOG.info("Register user");
 
         String role = request.getRole();
@@ -77,14 +77,12 @@ public class UserServiceImpl implements UserService {
         if (role.equalsIgnoreCase("admin")) {
             Admin admin = new Admin(request.getFirst_name(), request.getLast_name(), request.getLogin(), password, role);
             LOG.info("Save new admin: " + admin);
-            return adminRepository.save(admin);
+            adminRepository.save(admin);
         } else if (role.equalsIgnoreCase("driver")) {
             Driver driver = new Driver(request.getFirst_name(), request.getLast_name(), request.getLogin(), password, role);
             LOG.info("Save new driver: " + driver);
-            return driverRepository.save(driver);
+            driverRepository.save(driver);
         }
-
-        return null;
 
     }
 

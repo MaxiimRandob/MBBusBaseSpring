@@ -71,11 +71,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http
-                .authorizeRequests()
+        http.csrf().disable().headers().frameOptions().disable().and().authorizeRequests()
                 .antMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/registration").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/driver/**").hasRole("DRIVER")
+                .antMatchers( "/admin/**, /assignmentAdminDetails/**").hasRole("ADMIN")
+                .antMatchers( "/driver/**").hasRole("DRIVER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

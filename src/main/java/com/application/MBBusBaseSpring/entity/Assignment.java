@@ -28,13 +28,9 @@ public class Assignment {
     @JoinColumn(name = "user_id")
     private Driver driver;
 
-    @OneToMany(mappedBy = "assignment")
-    private Iterable<Admin> admins;
 
     public Assignment() {
     }
-
-
 
     public String getStatus() {
         return status;
@@ -50,6 +46,14 @@ public class Assignment {
 
     public void setDate(Timestamp date) {
         this.date = date;
+    }
+
+    public Bus getBus() {
+        return bus;
+    }
+
+    public void setBus(Bus bus) {
+        this.bus = bus;
     }
 
     public Route getRoute() {
@@ -68,11 +72,12 @@ public class Assignment {
         this.driver = driver;
     }
 
-    public Iterable<Admin> getAdmins() {
-        return admins;
+
+    public int getId() {
+        return id;
     }
 
-    public void setAdmins(Iterable<Admin> admins) {
-        this.admins = admins;
+    public void setId(int id) {
+        this.id = id;
     }
 }
