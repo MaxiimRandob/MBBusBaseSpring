@@ -4,11 +4,14 @@ import com.application.MBBusBaseSpring.controller.admin.AdminAssignmentDetailsCo
 import com.application.MBBusBaseSpring.dao.*;
 import com.application.MBBusBaseSpring.entity.*;
 import com.application.MBBusBaseSpring.service.AssignmentService;
+import com.application.MBBusBaseSpring.service.dto.AssignmentCreateRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -87,6 +90,23 @@ public class AssignmentServiceImpl implements AssignmentService {
         assignmentRepository.save(assignment);
     }
 
+    @Override
+    public void createAssignment(AssignmentCreateRequest createRequest) {
+        Assignment assignment = new Assignment();
+
+        Driver driver = driverRepository.findById(createRequest.driverId).get();
+        Bus bus = busRepository.findById(createRequest.busId).get();
+        Route route = routeRepository.findById(createRequest.routeId).get();
+
+        assignment.setStatus("expected");
+        assignment.setDriver(driver);
+        assignment.setBus(bus);
+        assignment.setRoute(route);
+        assignment.setDate(getCurrentDate());
+
+        assignmentRepository.save(assignment);
+    }
+
 
     private void inactivateAssignments(Iterable<Assignment> assignments, int driverId) {
 
@@ -98,6 +118,16 @@ public class AssignmentServiceImpl implements AssignmentService {
 
         assignmentRepository.saveAll(assignments);
 
+    }
+
+    private Timestamp getCurrentDate()
+    {
+        Date date= new Date();
+        //getTime() returns current time in milliseconds
+        long time = date.getTime();
+        //Passed the milliseconds to constructor of Timestamp class
+        Timestamp ts = new Timestamp(time);
+       return ts;
     }
 
 

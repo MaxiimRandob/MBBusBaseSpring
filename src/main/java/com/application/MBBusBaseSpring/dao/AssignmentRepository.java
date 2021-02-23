@@ -12,4 +12,6 @@ public interface AssignmentRepository extends CrudRepository<Assignment, Integer
 
     public Iterable<Assignment> findAllByStatus(String status);
 
+
+
 }

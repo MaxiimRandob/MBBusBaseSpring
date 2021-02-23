@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 @Table(name = "assignment")
 public class Assignment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column

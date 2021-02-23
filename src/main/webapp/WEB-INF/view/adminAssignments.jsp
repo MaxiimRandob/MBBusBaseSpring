@@ -69,6 +69,9 @@
                                                                             </c:forEach>
                                                                         </tbody>
                                                                     </table>
+                                                                    <input type="button" value="Add Target"
+                                                                    			   onclick="window.location.href='createAssignmentForm'; return false;"
+                                                                    />
                                                                 </div>
                                                             </div>
                                                         </div>
